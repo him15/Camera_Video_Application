@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+
+}
+.video_container{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+}
+.video{
+    height: 100%;
+    width: 100%;
+
+}
+
+#record_video{
+    position: fixed;
+    height: 4rem;
+    width: 4rem;
+    top: 1rem;
+    z-index: 100;
+    border-radius: 50%;
+    right: 4vw;
+    top: 34vh;
+
+}
