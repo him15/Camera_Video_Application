@@ -17,16 +17,108 @@ body{
 }
 
 #record_video , .capture_btn{
-    position: fixed;
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width: 4.5rem;
     top: 1rem;
     z-index: 2;
     border-radius: 50%;
     right: 4vw;
     top: 34vh;
-
+    background-color: red;
+    border: none;
+    outline: none;
+    /* animation: scaleUp 2s infinite; */
+    
 }
 .capture_btn{
     top: 55vh;
+    background-color: white;
+}
+.record-container{
+    height: 7rem;
+    width: 7rem;
+    border: 0.5rem solid white;
+    position: fixed;
+    top: 34vh;
+    right: 4vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.capture-container{
+    height: 7rem;
+    width: 7rem;
+    border: 0.5rem solid white;
+    position: fixed;
+    top: 55vh;
+    right: 4vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.record-animation{
+    animation: scaleUp 2s infinite;
+}
+
+.camera-animation{
+    animation: cameraScaleUp 1s ;
+    
+}
+
+
+@keyframes scaleUp {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes cameraScaleUp {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.filter-container{
+    height: 50vh;
+    width: 5rem;
+    position: fixed;
+    top: 10vh;
+    left: 5vw;
+}
+.filter{
+    background-image: url("https://picsum.photos/id/237/200/300");
+    height: 20%;
+    background-size: cover;
+    /* mix the bg color with the image */
+    background-blend-mode: color-burn;
+}
+
+.timing{
+    position: fixed;
+    color: white;
+    bottom: 12vh;
+    left: 3vw;
+    font-size: 1.7rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    display: none;
+}
+.timing-active{
+    display: block;
 }
