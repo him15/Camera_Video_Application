@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        
+    </style> -->
+</head>
+<body>
+    <!-- <div class="color-container">
+        <div class="color red"></div>
+        <div class="color blue"></div>
+        <div class="color green"></div>
+        
+    </div> -->
+    <img src="img.jpg" alt="Img">
+    <canvas id="board"></canvas>
+    
+
+
+
+
+    <script>
+        
+    let board = document.getElementById("board");
+    // let parent = document.querySelector(".color-container");
+    // board.height = window.innerHeight;
+    // board.width = window.innerWidth;
+    // // 2d
+    let tool = board.getContext("2d");
+    // let colordiv = document.querySelectorAll(".color");
+    // for(let i=0;i<colordiv.length;i++){
+    //     colordiv[i].addEventListener("click" , function(){
+    //         let color = colordiv[i].classList[1];
+    //         tool.strokeStyle = color;
+    //     })
+    // }
+    // // fill is for inner coloring
+    // tool.fillRect(0 , 0 , board.width/2 ,board.height/2 );
+    // tool.fillStyle = "red";
+    // tool.fillRect(50 , 50 , board.width/2 , board.height/2);
+    // tool.fillStyle = "pink";
+    // tool.fillRect(60 , 60 , board.width/2 , board.height/2);
+    // // stroke is for border
+    
+    // tool.strokeStyle = "green";
+    // tool.lineWidth = 5; // thickness
+    // tool.strokeRect(60 , 200 , board.width/2 , board.height/2);
+    
+    // -------------------- 2nd Time Code-----------------------------
+    board.height = window.innerHeight;
+    board.width = window.innerWidth;
+    // window.addEventListener("resize" , function(){
+        //     board.height = window.innerHeight;
+        //     board.width = window.innerWidth;
+        //     draw();
+        // })
+        // let tool = board.getContext("2d");
+        // draw();
+        
+        // function draw(){
+            //     tool.fillStyle = "red";
+            //     tool.fillRect(0 , 0 , board.width , board.height);
+            //     tool.fillStyle = "lightgreen";
+            //     tool.fillRect(0 , 0 , board.width/2 , board.height/2);
+            //     tool.fillRect(0 , 0 , board.width/2 , board.height/2);
+            
+            //     tool.strokeRect(0 , 0, board.width / 2 , board.height/2);
+            
+            // }
+            
+            // ------------------- 3rd Time Code -------------------------------
+            
+        // tool.strokeStyle = "yellow";
+        // tool.lineWidth = 5;
+        // let isMouseDown=false;
+        
+        // document.body.addEventListener("mousedown" , function(e){
+        //     let x= e.clientX;
+        //     let y = e.clientY;
+        //     y = getCoordinates(y);
+        //     tool.beginPath();
+        //     tool.moveTo(x,y);
+        //     isMouseDown = true;
+            
+        // })
+        // // whenever mouse move this event run 
+        // document.body.addEventListener("mousemove" , function(e){
+        //     let x = e.clientX;
+        //     let y = e.clientY;
+        //     y = getCoordinates(y);
+        //     if(isMouseDown== true){
+        //         tool.lineTo(x,y);
+        //         tool.stroke();
+        //     }
+        // })
+
+        // document.body.addEventListener("mouseup" , function(e){
+          
+        //     // tool.stroke();
+        //     isMouseDown = false;
+        // })
+        
+        // function getCoordinates(initialY){
+        //     let obj = parent.getBoundingClientRect();
+        //     return (initialY - obj.height);
+        // }
+   
+            
+        let img = document.querySelector("img");
+        // draw img
+        img.addEventListener("load" , function(){
+            tool.drawImage(img , 0,0)
+        })
+        
+   
+   </script>
+</body>
+</html>

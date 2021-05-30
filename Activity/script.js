@@ -1,6 +1,7 @@
 // constraint which we want 
 let videoRecorder = document.querySelector("#record_video");
 let videoElem = document.querySelector("#video_elem");
+let captureBtn = document.querySelector("#capture");
 let recordState = false;
  let constraint = {
      video : true ,
@@ -48,4 +49,25 @@ let recordState = false;
          videoRecorder.innerHTML = "Record";
          recordState = false;
      }
+ })
+
+ captureBtn.addEventListener("click" , function(){
+     // create a canvas Element 
+     let canvas = document.createElement("canvas");
+     // width and height will equal to your video frame
+     canvas.width = videoElem.videoWidth;
+     canvas.height = videoElem.videoHeight;
+     let tool = canvas.getContext("2d");
+     // draw a frame on that canvas...
+     tool.drawImage(videoElem , 0 , 0);
+     let link = canvas.toDataURL(); // convert image into url
+
+     // download code
+     let anchor = document.createElement("a");
+     anchor.href = link;
+     anchor.download = "file.png";
+     anchor.click();
+     anchor.remove();
+     canvas.remove();
+
  })

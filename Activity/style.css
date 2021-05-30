@@ -16,14 +16,17 @@ body{
 
 }
 
-#record_video{
+#record_video , .capture_btn{
     position: fixed;
-    height: 4rem;
-    width: 4rem;
+    height: 5rem;
+    width: 5rem;
     top: 1rem;
-    z-index: 100;
+    z-index: 2;
     border-radius: 50%;
     right: 4vw;
     top: 34vh;
 
+}
+.capture_btn{
+    top: 55vh;
 }
