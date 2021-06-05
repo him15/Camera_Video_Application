@@ -3,7 +3,13 @@ let videoRecorder = document.querySelector("#record_video");
 let videoElem = document.querySelector("#video_elem");
 let captureBtn = document.querySelector("#capture");
 let timing = document.querySelector("#timing");
+let allFilters = document.querySelectorAll(".filter");
+let uiFilter = document.querySelector(".ui-filter");
+let zoomInEle = document.querySelector("#plus-container");
+let zoomOutEle = document.querySelector("#minus-container");
+let filterColor = "";
 let recordState = false;
+let zoomLevel = 1;
 let clearObj;
  let constraint = {
      video : true ,
@@ -62,20 +68,55 @@ let clearObj;
      canvas.width = videoElem.videoWidth;
      canvas.height = videoElem.videoHeight;
      let tool = canvas.getContext("2d");
-     // draw a frame on that canvas...
-     tool.drawImage(videoElem , 0 , 0);
+
+     // zoom and zoom out 
+     tool.scale(zoomLevel , zoomLevel);
+     
+     // zoom from center
+     let x = (canvas.width / zoomLevel - canvas.width) / 2;
+     let y = (canvas.height / zoomLevel - canvas.height) / 2;
+     // draw image from x , y points 
+     tool.drawImage(videoElem , x , y);
+
+     if(filterColor){
+         // adding filters
+     tool.fillStyle = filterColor;
+     tool.fillRect( 0 , 0 , canvas.width , canvas.height);
+
+     }
+
      let link = canvas.toDataURL(); // convert image into url
     captureBtn.classList.add("camera-animation");
-     // download code
-     let anchor = document.createElement("a");
-     anchor.href = link;
-     anchor.download = "file.png";
-     anchor.click();
-     anchor.remove();
-     canvas.remove();
-
+    // download code
+    let anchor = document.createElement("a");
+    anchor.href = link;
+    anchor.download = "file.png";
+    anchor.click();
+    anchor.remove();
+    canvas.remove();
+    setTimeout(function(){
+        captureBtn.classList.remove("camera-animation");
+        
+     }, 1000);
 
  })
+
+ for(let i=0;i<allFilters.length;i++){
+    allFilters[i].addEventListener("click" , function(){
+        let color = allFilters[i].style.backgroundColor;
+        if(color){
+            uiFilter.classList.add("ui-filter-active");
+            uiFilter.style.backgroundColor = color;
+            filterColor = color;
+        }else{
+            uiFilter.classList.remove("ui-filter-active");
+            uiFilter.style.backgroundColor = "";
+            filterColor = "";
+
+        }
+    })
+ }
+
 
  function startCounting(){
     timing.classList.add("timing-active");
@@ -94,3 +135,22 @@ let clearObj;
     timing.innerText = "00:00:00";
     clearInterval(clearObj);
  }
+
+//  Zoom zoomout
+
+
+zoomInEle.addEventListener("click" , function(){
+    
+    if(zoomLevel < 3 ){
+        zoomLevel += 0.2;
+        videoElem.style.transform = `scale(${zoomLevel})`;
+    }
+})
+
+zoomOutEle.addEventListener("click" , function(){
+    
+    if(zoomLevel > 1 ){
+        zoomLevel -= 0.2;
+        videoElem.style.transform = `scale(${zoomLevel})`;
+    }
+})
